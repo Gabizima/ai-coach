@@ -1,74 +1,89 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { View, Text, ScrollView, SafeAreaView } from 'react-native';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={{ flex: 1, backgroundColor: '#111827' }}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <ScrollView>
+          {/* Header */}
+          <View style={{ padding: 16 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <View>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>Max</Text>
+                <Text style={{ color: '#34D399' }}>Niveau Intermédiaire</Text>
+              </View>
+              <View style={{ flexDirection: 'row', gap: 4 }}>
+                <View style={{ width: 8, height: 8, backgroundColor: '#34D399', borderRadius: 4 }} />
+                <View style={{ width: 8, height: 8, backgroundColor: '#34D399', borderRadius: 4 }} />
+                <View style={{ width: 8, height: 8, backgroundColor: '#34D399', borderRadius: 4 }} />
+              </View>
+            </View>
+          </View>
+
+          {/* Objectifs */}
+          <View style={{ padding: 16 }}>
+            <View style={{ 
+              backgroundColor: '#1F2937', 
+              borderRadius: 24, 
+              padding: 24,
+              borderWidth: 1,
+              borderColor: 'rgba(75, 85, 99, 0.3)'
+            }}>
+              <View style={{ 
+                flexDirection: 'row', 
+                alignItems: 'center', 
+                justifyContent: 'space-between',
+                marginBottom: 24
+              }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>
+                  Mes Objectifs
+                </Text>
+                <View style={{ 
+                  backgroundColor: 'rgba(52, 211, 153, 0.2)', 
+                  borderRadius: 20,
+                  paddingVertical: 6,
+                  paddingHorizontal: 16
+                }}>
+                  <Text style={{ color: '#34D399' }}>3 objectifs actifs</Text>
+                </View>
+              </View>
+              
+              {/* Liste des objectifs à ajouter */}
+            </View>
+          </View>
+
+          {/* Programme du jour */}
+          <View style={{ padding: 16 }}>
+            <View style={{ 
+              backgroundColor: '#1F2937',
+              borderRadius: 24,
+              padding: 24,
+              borderWidth: 1,
+              borderColor: 'rgba(75, 85, 99, 0.3)'
+            }}>
+              <View style={{ 
+                backgroundColor: 'rgba(52, 211, 153, 0.2)',
+                borderRadius: 20,
+                paddingVertical: 4,
+                paddingHorizontal: 12,
+                alignSelf: 'flex-start',
+                marginBottom: 8
+              }}>
+                <Text style={{ color: '#34D399' }}>Session du jour</Text>
+              </View>
+              <Text style={{ 
+                fontSize: 24, 
+                fontWeight: 'bold', 
+                color: 'white',
+                marginBottom: 4
+              }}>
+                Pull & Core
+              </Text>
+              <Text style={{ color: '#9CA3AF' }}>Adapté à votre progression</Text>
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
